@@ -21,6 +21,7 @@ Vagrant.configure("2") do |config|
   config.vm.synced_folder ".", "/vagrant", :mount_options => ["dmode=777","fmode=666"]
 
   config.ssh.forward_agent = true
+  config.vm.network :private_network, ip: "192.168.43.10"
 
   config.vm.provider :virtualbox do |vb|
     vb.customize ["modifyvm", :id, "--memory", "1024"]

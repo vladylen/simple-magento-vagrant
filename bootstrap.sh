@@ -83,15 +83,15 @@ fi
 if [[ $SAMPLE_DATA == "true" ]]; then
   cd /vagrant
 
-  if [[ ! -f "/vagrant/magento-sample-data-${DATA_VERSION}.tar.gz" ]]; then
+  if [[ ! -f "/vagrant/magento-sample-data.tar.gz" ]]; then
     # Only download sample data if we need to
     wget http://www.magentocommerce.com/downloads/assets/${DATA_VERSION}/magento-sample-data-${DATA_VERSION}.tar.gz
   fi
 
-  tar -zxvf magento-sample-data-${DATA_VERSION}.tar.gz
+  tar -zxvf magento-sample-data.tar.gz
   cp -R magento-sample-data-${DATA_VERSION}/media/* httpdocs/media/
   cp -R magento-sample-data-${DATA_VERSION}/skin/*  httpdocs/skin/
-  mysql -u root magentodb < magento-sample-data-${DATA_VERSION}/magento_sample_data_for_${DATA_VERSION}.sql
+  mysql -u root magentodb < magento-sample-data-${MAGE_VERSION}/magento_sample_data_for_${MAGE_VERSION}.sql
   rm -rf magento-sample-data-${DATA_VERSION}
 fi
 
